@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
 # Install Python dependencies
 RUN pip3 install setuptools \
                  rpi_ws281x \
+                 gpiozero \
                  adafruit-circuitpython-neopixel
 
 # Set up the ROS workspace
