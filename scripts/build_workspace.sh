@@ -21,8 +21,9 @@ docker run --rm -v "$ROS_WORKSPACE_PATH:/ros_ws" amd64/ros:humble-ros-base /bin/
   colcon build
 "
 
+chmod u+x scripts/angela_run.sh
 cp scripts/ros_source.sh angela_ws/ros_source.sh
-sshpass -p $TARGET_PASS scp -r Dockerfile angela_ws/ scripts/angela_run.sh $TARGET_USER@$TARGET_IP:$TARGET_DIR
+sshpass -p $TARGET_PASS rsync -av --progress Dockerfile angela_ws scripts/angela_run.sh $TARGET_USER@$TARGET_IP:$TARGET_DIR
 
 # Clean up
 rm -rf angela_ws/ros_source.sh

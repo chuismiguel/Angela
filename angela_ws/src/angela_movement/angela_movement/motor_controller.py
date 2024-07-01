@@ -2,8 +2,6 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 import RPi.GPIO as GPIO
-import neopixel
-import board
 
 GPIO_MOTOR1_1 = 27
 GPIO_MOTOR1_2 = 22
@@ -32,8 +30,6 @@ class MotorController(Node):
         self.mot4 = GPIO.PWM(GPIO_MOTOR2_2, 50)
         self.mot4.start(0)
 
-        self.pixels = neopixel.NeoPixel(board.D13, 6)
-
         # Subscribe to cmd_vel
         self.subscription = self.create_subscription(
             Twist,
@@ -47,7 +43,6 @@ class MotorController(Node):
 
         linear_x = msg.linear.x
         angular_z = msg.angular.z
-        self.pixels.fill((0,255,0))
         
         # Forward or backward
         if linear_x > 0:

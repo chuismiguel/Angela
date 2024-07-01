@@ -4,6 +4,7 @@ FROM arm64v8/ros:humble-ros-base
 # Install necessary packages
 RUN apt-get update && apt-get install -y \
     python3-pip \
+    net-tools \
     python3-rpi.gpio \
     rpi.gpio-common \
     gpiod \
