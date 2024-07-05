@@ -24,7 +24,7 @@ class UltrasonicNode(Node):
 
         # Create a publisher for the sensor distance
         self.publisher_ = self.create_publisher(Float32, 'angela/sensor_distance', 10)
-        self.timer = self.create_timer(1.0, self.publish_distance)
+        self.timer = self.create_timer(0.1, self.publish_distance)
 
         # Create a subscriber for the LED colors
         self.subscription = self.create_subscription(

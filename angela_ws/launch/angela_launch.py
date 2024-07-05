@@ -17,6 +17,21 @@ def generate_launch_description():
             name='ultrasensor',
             output='screen',
         ),
+        Node(
+            package='angela_joint_control',
+            executable='joint_control_node',
+            name='joint_control_node',
+            output='screen',
+        ),
+        # Node(
+        #     package='camera_ros',
+        #     executable='camera_node',
+        #     name='camera_node',
+        #     output='screen',
+        #     parameters=[
+        #         {'camera': '/base/soc/i2c0mux/i2c@1/ov5647@36'}
+        #     ],
+        # ),
     ])
 
 if __name__ == '__main__':

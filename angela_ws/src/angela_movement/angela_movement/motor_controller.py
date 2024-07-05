@@ -33,13 +33,12 @@ class MotorController(Node):
         # Subscribe to cmd_vel
         self.subscription = self.create_subscription(
             Twist,
-            'cmd_vel',
+            'angela/cmd_vel',
             self.cmd_vel_callback,
             10)
         self.subscription  # prevent unused variable warning
 
     def cmd_vel_callback(self, msg):
-        self.get_logger().info(f'Received cmd_vel: linear.x={msg.linear.x}, angular.z={msg.angular.z}')
 
         linear_x = msg.linear.x
         angular_z = msg.angular.z
@@ -71,11 +70,6 @@ class MotorController(Node):
             self.mot2.start(50)
             self.mot3.start(0)
             self.mot4.start(50)
-        else:
-            self.mot1.start(0)
-            self.mot2.start(0)
-            self.mot3.start(0)
-            self.mot4.start(0)
 
 def main(args=None):
     rclpy.init(args=args)
