@@ -1,0 +1,26 @@
+server:
+  port: 5000
+
+ultrasensor:
+  gpio: 26
+  max_read_distance: 1
+leds:
+  # specified as string since is loaded by board module
+  gpio: D12
+
+servos:
+  arm:
+    left_arm_index: 1
+    right_arm_index: 2
+    angle_down_limit : 20
+    angle_up_limit : 60
+  head:
+    index: 3
+    angle_down_limit : 20
+    angle_up_limit : 60
+
+motors:
+  left_forward_index: 12
+  left_backward_index: 13
+  right_forward_index: 14
+  right_backward_index: 15
