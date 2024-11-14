@@ -44,6 +44,21 @@ def pick_and_send_color():
         except requests.exceptions.RequestException as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 
+def send_stop():
+    # Send the X and Z values to the Raspberry Pi server
+    try:
+        response = requests.post(
+            server + "/move",
+            json={"x": 0, "z": 0}
+        )
+        
+        if response.status_code == 200:
+            messagebox.showinfo("Success", "Movement command sent successfully")
+        else:
+            messagebox.showerror("Error", "Failed to send movement command")
+    except requests.exceptions.RequestException as e:
+        messagebox.showerror("Error", f"An error occurred: {e}")
+
 # Function to send X and Z values to the Raspberry Pi server
 def send_movement_command():
     x_value = x_slider.get()
@@ -74,6 +89,9 @@ distance_label.pack(pady=10)
 # Button to fetch sensor data
 fetch_button = tk.Button(root, text="Fetch Sensor Data", command=fetch_sensor_data, font=("Arial", 14))
 fetch_button.pack(pady=20)
+
+stop_button = tk.Button(root, text="Stop robot", command=send_stop, font=("Arial", 14))
+stop_button.pack(pady=20)
 
 # Button to open color picker and send selected color
 color_button = tk.Button(root, text="Pick and Send LED Color", command=pick_and_send_color, font=("Arial", 14))

@@ -20,7 +20,7 @@ servos:
     angle_up_limit : 60
 
 motors:
-  left_forward_index: 12
-  left_backward_index: 13
+  left_forward_index: 13
+  left_backward_index: 12
   right_forward_index: 14
   right_backward_index: 15
